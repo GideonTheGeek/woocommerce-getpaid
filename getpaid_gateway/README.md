@@ -1,4 +1,4 @@
-# Plugin for Woocommerce beta - Version 1.0.2
+#Getpaid Plugin for Woocommerce beta - Version 1.0.2
 
 Simple and easy to use plugin for getpaid.com payment gateway.
 
