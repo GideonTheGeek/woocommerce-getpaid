@@ -4,7 +4,7 @@ Plugin Name: WooCommerce Getpaid Payment Gateway
 Plugin URI: http://www.gp.com
 Description: getpaid Payment gateway for woocommerce
 Version: 1.2
-Author: Software developers ltd kenya
+Author: Software developers ltd kenya 
 Author URI: http://www.getpaid.co.ke
 */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {

@@ -1,10 +1,10 @@
-#Pesapal Plugin for Woocommerce beta - Version 1.0.2
+# Plugin for Woocommerce beta - Version 1.0.2
 
-Simple and easy to use plugin for pesapal.com payment gateway.
+Simple and easy to use plugin for getpaid.com payment gateway.
 
 Please raise any issues though github, thanks.
 
-If you like this plugin consider [donating](http://jakeii.github.com/woocommerce-pesapal) a few bob for a coffee :)
+
 
 ##Requirements
 (Same as Woocommerce)
@@ -17,7 +17,7 @@ Install by simply searching for the plugin within the wordpress plugin repositor
 
 **OR**
 
-* Clone the repo or download the zip and copy the woocommerce-pesapal directory to the /wp-content/plugins directory of your wordpress installation.
+* Clone the repo or download the zip and copy the woocommerce-getpaid directory to the /wp-content/plugins directory of your wordpress installation.
 * Enable the plugin in Wordpress.
 * Enter your consumer and secret key in the Payment Gateway section of the Woocommerce settings page.
 * Enable the gateway.
@@ -29,7 +29,7 @@ Not using an iframe has been disabled/removed because it causes to much trouble.
 It is recommend that you enable IPN in the plugins settings page, as there are some issues with checking periodically for order updates.
 
 ##Licence
-Copyright &copy; 2012 Jake Lee Kennedy, Licensed under GPLv3
+Copyright &copy; 2015 sdl, Licensed under GPLv3
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 3, as
