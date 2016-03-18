@@ -139,7 +139,7 @@ function woocommerce_gp_getpaid_init(){
       add_action('before_woocommerce_pay', array(&$this, 'before_pay'));
       add_action('woocommerce_thankyou_getpaid', array(&$this, 'thankyou_page'));
       add_action('getpaid_background_payment_checks', array($this, 'background_check_payment_status'));
-      add_action( 'woocommerce_api_WC_Getpaid_gateway', array( $this, 'background_check_payment_status' ) );
+      add_action( 'woocommerce_api_WC_Getpaid_gateway', array( $this, 'ipn_response' ) );
       add_action('getpaid_process_valid_ipn_request', array($this, 'process_valid_ipn_request'));
 
       //add_action('woocommerce_receipt_getpaid', array($this, 'receipt_page'));
