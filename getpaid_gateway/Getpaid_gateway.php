@@ -208,7 +208,7 @@ function woocommerce_gp_getpaid_init(){
 
         public function admin_options() { ?>
         
-          <h3><?php _e('Pesapal Payment', 'woothemes'); ?></h3>
+          <h3><?php _e('Getpaid Payment', 'woothemes'); ?></h3>
           <p>
             <?php _e('Allows use of the GetPaid Payment Gateway, all you need is an account at getpaid.co.ke and your consumer and secret key.<br />', 'woothemes'); ?>
 
@@ -349,19 +349,17 @@ function woocommerce_gp_getpaid_init(){
         $order    = &new WC_Order( $order_id );
         $getpaidMerchantReference = $_GET['merchantref'];
         $getpaidTrackingId        = $_GET['getpaid_tracking_id'];
-        
-        //$status         = $this->checkTransactionStatus($pesapalMerchantReference);
-        //$status           = $this->checkTransactionStatus($pesapalMerchantReference,$pesapalTrackingId);
+
         $transactionDetails = $this->getTransactionDetails($getpaidMerchantReference,$getpaidTrackingId);
    
         $order->add_order_note( __('Payment accepted, awaiting confirmation.', 'woothemes') );
-        add_post_meta( $order_id, '_order_pesapal_transaction_tracking_id', $transactionDetails['getpaid_transaction_tracking_id']);
-        add_post_meta( $order_id, '_order_pesapal_payment_method', $transactionDetails['payment_method']);
+        add_post_meta( $order_id, '_order_getpaid_transaction_tracking_id', $transactionDetails['getpaid_transaction_tracking_id']);
+        add_post_meta( $order_id, '_order_getpaid_payment_method', $transactionDetails['payment_method']);
         
         
         $dbUpdateSuccessful = add_post_meta( $order_id, '_order_payment_method', $transactionDetails['payment_method']);
         global $wpdb;
-        $table_name = $wpdb->prefix . 'getpaid2_queue';
+        $table_name = $wpdb->prefix . 'getpaid_queue';
         $wpdb->insert($table_name, array('order_id' => $order_id, 'tracking_id' => $getpaidTrackingId, 'time' => current_time('mysql')), array('%d', '%s', '%s'));
       
 
