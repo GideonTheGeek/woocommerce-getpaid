@@ -4,7 +4,7 @@ Plugin Name: WooCommerce Getpaid Payment Gateway
 Plugin URI: http://www.gp.com
 Description: getpaid Payment gateway for woocommerce
 Version: 1.2
-Author: Software developers ltd kenya 
+Author: Software developers kenya: theAcer
 Author URI: http://www.getpaid.co.ke
 */
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
@@ -139,8 +139,8 @@ function woocommerce_gp_getpaid_init(){
       add_action('before_woocommerce_pay', array(&$this, 'before_pay'));
       add_action('woocommerce_thankyou_getpaid', array(&$this, 'thankyou_page'));
       add_action('getpaid_background_payment_checks', array($this, 'background_check_payment_status'));
-      add_action( 'woocommerce_api_WC_Getpaid_gateway', array( $this, 'ipn_response' ) );
-      add_action('pesapal_process_valid_ipn_request', array($this, 'process_valid_ipn_request'));
+      add_action( 'woocommerce_api_WC_Getpaid_gateway', array( $this, 'background_check_payment_status' ) );
+      add_action('getpaid_process_valid_ipn_request', array($this, 'process_valid_ipn_request'));
 
       //add_action('woocommerce_receipt_getpaid', array($this, 'receipt_page'));
    }
@@ -494,12 +494,7 @@ function woocommerce_gp_getpaid_init(){
               
    } 
   
-        /**
-         * Check Transaction status
-         *
-         * @return ARRAY
-         * @author getpaid
-         **/
+
     function curlRequest($request_status){
 
       $json = file_get_contents($request_status);
@@ -517,7 +512,7 @@ function woocommerce_gp_getpaid_init(){
          * IPN Response
          *
          * @return null
-         * @author Jake Lee Kennedy
+         * @author software developers kenya theAcer
          **/
     function ipn_response(){
       
@@ -604,9 +599,9 @@ function woocommerce_gp_getpaid_init(){
     }
 
           
-      } // END WC_Pesapal_Gateway Class
+      } // END WC_Getpaid_Gateway Class
     
-  } // END init_woo_pesapal_gateway()
+  } // END woocommerce_gp_getpaid_init()
 /**
      * Add the Gateway to WooCommerce
      **/
