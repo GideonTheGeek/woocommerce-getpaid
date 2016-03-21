@@ -14,7 +14,9 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
   register_deactivation_hook( __FILE__, 'remove_gp_background_checks' );
   register_uninstall_hook( __FILE__, 'gp_uninstall' );
 
-
+  // include OAuth
+  define( 'PLUGIN_DIR', dirname(__FILE__).'/' );
+  require_once(PLUGIN_DIR . 'libs/OAuth.php');
 
   // cron interval for ever 5 minuites
   add_filter('cron_schedules','gp_cron_definer');
