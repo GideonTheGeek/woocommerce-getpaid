@@ -23,7 +23,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
   function gp_cron_definer($schedules){
     $schedules['fivemins'] = array(
-        'interval'=> 60,
+        'interval'=> 300,
         'display'=>  __('Once Every 5 minuites'),
     );
     return $schedules;
