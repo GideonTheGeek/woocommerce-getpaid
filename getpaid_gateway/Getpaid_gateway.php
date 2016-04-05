@@ -18,16 +18,23 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
   define( 'PLUGIN_DIR', dirname(__FILE__).'/' );
   require_once(PLUGIN_DIR . 'libs/OAuth.php');
 
-  // cron interval for ever 5 minuites
-  add_filter('cron_schedules','gp_cron_definer');
+  // Custom Cron Recurrences
+function gp_cron_definer_recurrence( $schedules ) {
+	$schedules[''] = array(
+		'display' => __( '', 'textdomain' ),
+		'interval' => 300,
+	);
+	return $schedules;
+}
+add_filter( 'cron_schedules', 'gp_cron_definer_custom_recurrence' );
 
-  function gp_cron_definer($schedules){
-    $schedules['fivemins'] = array(
-        'interval'=> 60,
-        'display'=>  __('Once Every 5 minuites'),
-    );
-    return $schedules;
-  }
+// Schedule Cron Job Event
+function gp_cron_definer() {
+	if ( ! wp_next_scheduled( '' ) ) {
+		wp_schedule_event( time(), '', '' );
+	}
+}
+add_action( 'wp', 'gp_cron_definer' );
 
   /**
    * Activation, create processing order table, and table version option
